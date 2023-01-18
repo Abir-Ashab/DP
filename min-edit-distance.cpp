@@ -12,7 +12,7 @@ int editDistance(string &S1, string &S2) {
     for (int j = 0; j <= m; j++) {
         prev[j] = j;
     }
-
+    cout << "Path : ";
     for (int i = 1; i < n + 1; i++) {
         cur[0] = i;
         for (int j = 1; j < m + 1; j++) {
@@ -21,6 +21,7 @@ int editDistance(string &S1, string &S2) {
 
             else
                 cur[j] = 1 + min(prev[j - 1], min(prev[j], cur[j - 1]));
+            if(j == i + 1 and prev[i - 1] != cur[j - 1]) cout << S2[i - 1] << ' ';
         }
         prev = cur;
     }
